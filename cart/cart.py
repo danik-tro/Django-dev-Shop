@@ -54,6 +54,13 @@ class Cart(object):
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
 
+    def get_total_price(self):
+        """
+        Подсчет стоимости товаров в корзине.
+        """
+        return sum(Decimal(item['price']) * item['quantity'] for item in
+                   self.cart.values())
+
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
