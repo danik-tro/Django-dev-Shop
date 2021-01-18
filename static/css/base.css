@@ -1,0 +1,20 @@
+#header {
+    background-color: chartreuse;
+    height: max-content;
+    text-align: center;
+}
+
+#subheader {
+    background-color: chartreuse;
+    height: max-content;
+    text-align: left;
+}
+
+.cart {
+    margin-left: 10px;
+}
+
+img {
+    width: 70px;
+    height: 70px;
+}
