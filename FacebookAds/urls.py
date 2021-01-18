@@ -1,9 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('shop/', include('Shop.urls'))
+    url(r'^', include('Shop.urls', namespace='shop'))
 ]

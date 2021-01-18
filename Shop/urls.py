@@ -1,9 +1,10 @@
 from django.urls import path
 from django.conf.urls import url
-from .views import shop, product_list, product_detail
+from .views import product_list, product_detail
+
+app_name = 'shop'
 
 urlpatterns = [
-    path('', shop),
     url(r'^$', product_list, name='product_list'),
     url(r'^(?P<category_slug>[-\w]+)/$',
         product_list,
