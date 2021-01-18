@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('available', models.BooleanField(default=True, verbose_name='Наличие товара')),
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
                 ('updated', models.DateTimeField(auto_now=True, verbose_name='Дата обновления')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Shop.category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shop.category')),
             ],
             options={
                 'verbose_name': 'Товар',
