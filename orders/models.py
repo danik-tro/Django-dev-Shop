@@ -2,6 +2,34 @@ from django.db import models
 from shop.models import Product
 
 
+class Delivery(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Способ доставки", default='-')
+    slug = models.SlugField(max_length=50, default='-')
+
+    class Meta:
+        verbose_name = 'Способ доставки'
+        verbose_name_plural = 'Способы доставки'
+
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
+class PaymentMethod(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Способ доставки', default='-')
+    slug = models.SlugField(max_length=50, default='-')
+
+    class Meta:
+        verbose_name = 'Способ оплаты'
+        verbose_name_plural = 'Способы оплаты'
+
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+
 class Order(models.Model):
     first_name = models.CharField(max_length=50, verbose_name="Имя")
     last_name = models.CharField(max_length=50, verbose_name='Фамилия')
@@ -12,6 +40,8 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    payment = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE)
+    delivery = models.ForeignKey(Delivery, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-created',)
@@ -36,3 +66,5 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+
