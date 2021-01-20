@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from .models import OrderItem
+from .models import OrderItem, History
 from .forms import OrderCreateForm
 from cart.cart import Cart
+from django.contrib.auth.decorators import login_required
 
 
+@login_required()
 def order_create(request):
     cart = Cart(request)
 
@@ -12,6 +14,8 @@ def order_create(request):
 
         if form.is_valid():
             order = form.save()
+            History.objects.create(order=order,
+                                   user=request.user)
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],

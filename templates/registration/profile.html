@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+{% load crispy_forms_field %}
+
+
+{% block content %}
+    <h1>Информация о пользователе</h1>
+    <p>Аватар</p>
+    <p>
+        <img class='user_info' width="100px" height="100px" src="{% if user.image %}{{ user.image.url }} {% else %}{% static 'image/no_image.png' %}{% endif %}">
+    </p>
+    <p>Username: {{ user.username }}</p>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Дата регистрации: {{ user.date_joined }}</p>
+    <h1>Информация о заказах</h1>
+    <div>
+        {% for order in orders %}
+            <hr>
+            <p>Дата заказа: {{ order.0.order.created }}</p>
+            <p>Имя: {{ order.0.order.first_name }}</p>
+            <p>Фамилия: {{ order.0.order.last_name }}</p>
+            <div>
+                {% for order_item in order.1 %}
+                    <p>Продукт: {{ order_item.product }}</p>
+                    <p>Цена: {{ order_item.price }}</p>
+                    <p>Количество: {{ order_item.quantity }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

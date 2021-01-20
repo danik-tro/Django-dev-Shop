@@ -27,14 +27,13 @@ def product_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     cart_product_form = CartAddProductForm()
-    user_is_auth = request.user.is_authenticated
-    print(user_is_auth)
+    user = request.user
     return render(
         request,
         'shop/product/detail.html',
         {
             'product': product,
             'cart_product_form': cart_product_form,
-            'user_us_auth': user_is_auth,
+            'user': user,
         }
     )
