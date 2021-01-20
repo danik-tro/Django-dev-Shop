@@ -14,10 +14,10 @@
     <div id="header">
         <h1><a href="/" class="logo">Магазин</a></h1>
         {% if user.is_authenticated  %}
-                <h1><a href="/" class="logo">Профиль</a></h1>
+                <h1><a href="{% url 'users:profile' %}" class="logo">Профиль</a></h1>
                 <h1><a href="{% url 'users:logout' %}" class="logo">Выход</a></h1>
             {% else %}
-                <h1><a href="/" class="logo">Регистрация</a></h1>
+                <h1><a href=" {% url 'users:register' %}" class="logo">Регистрация</a></h1>
                 <h1><a href="{% url 'users:login' %}" class="logo">Вход</a></h1>
             {% endif %}
 

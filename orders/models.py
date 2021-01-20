@@ -1,5 +1,6 @@
 from django.db import models
 from shop.models import Product
+from users.models import User
 
 
 class Delivery(models.Model):
@@ -70,4 +71,17 @@ class OrderItem(models.Model):
     def get_cost(self):
         return self.price * self.quantity
 
+
+class History(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Заказчик')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Историю заказа'
+        verbose_name_plural = 'Истории заказов'
+        ordering = ('date',)
+
+    def __str__(self):
+        return str(self.date)
 

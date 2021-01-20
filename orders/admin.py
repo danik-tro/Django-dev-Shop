@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem, PaymentMethod, Delivery
+from .models import Order, OrderItem, PaymentMethod, Delivery, History
 
 
 class OrderItemInline(admin.TabularInline):
@@ -36,3 +36,11 @@ class DeliveryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Delivery, DeliveryAdmin)
+
+
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'order', 'date']
+    list_filter = ['date']
+
+
+admin.site.register(History, HistoryAdmin)
