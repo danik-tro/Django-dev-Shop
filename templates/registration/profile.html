@@ -16,4 +16,21 @@
     <p>Фамилия: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Дата регистрации: {{ user.date_joined }}</p>
+    <h1>Информация о заказах</h1>
+    <div>
+        {% for order in orders %}
+            <hr>
+            <p>Дата заказа: {{ order.0.order.created }}</p>
+            <p>Имя: {{ order.0.order.first_name }}</p>
+            <p>Фамилия: {{ order.0.order.last_name }}</p>
+            <div>
+                {% for order_item in order.1 %}
+                    <p>Продукт: {{ order_item.product }}</p>
+                    <p>Цена: {{ order_item.price }}</p>
+                    <p>Количество: {{ order_item.quantity }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
 {% endblock %}

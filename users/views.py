@@ -6,11 +6,20 @@ from django.views.generic.base import TemplateView
 from .forms import RegisteredUserForm
 from django.views.generic.edit import CreateView
 from .models import User
+from orders.models import History, OrderItem
 
 
 @login_required()
 def profile(request):
-    return render(request, 'registration/profile.html')
+    order_items = []
+    for item in History.objects.filter(user=request.user).order_by('-date'):
+        order_items.append(
+            (item, OrderItem.objects.filter(order=item.order))
+        )
+
+    return render(request, 'registration/profile.html', context={
+        'orders': order_items,
+    })
 
 
 class RegisterUserView(CreateView):
