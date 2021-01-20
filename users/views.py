@@ -30,8 +30,6 @@ class RegisterUserView(CreateView):
 
     def form_valid(self, form):
         form.save()
-        # do something with self.object
-        # remember the import: from django.http import HttpResponseRedirect
         return HttpResponseRedirect(self.success_url)
 
 

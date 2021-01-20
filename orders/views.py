@@ -15,7 +15,7 @@ def order_create(request):
         if form.is_valid():
             order = form.save()
             History.objects.create(order=order,
-                                             user=request.user)
+                                   user=request.user)
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
