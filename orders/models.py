@@ -3,8 +3,10 @@ from shop.models import Product
 
 
 class Delivery(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Способ доставки", default='-')
-    slug = models.SlugField(max_length=50, default='-')
+    name = models.CharField(max_length=50, verbose_name="Способ доставки",
+                            db_index=True)
+    slug = models.SlugField(max_length=50, blank=True,
+                            db_index=True, unique=True)
 
     class Meta:
         verbose_name = 'Способ доставки'
@@ -17,8 +19,9 @@ class Delivery(models.Model):
 
 
 class PaymentMethod(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Способ доставки', default='-')
-    slug = models.SlugField(max_length=50, default='-')
+    name = models.CharField(max_length=50, verbose_name='Способ доставки', db_index=True)
+    slug = models.SlugField(max_length=50, blank=True,
+                            db_index=True, unique=True)
 
     class Meta:
         verbose_name = 'Способ оплаты'

@@ -22,6 +22,8 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'slug']
     list_filter = ['name']
 
+    prepopulated_fields = {'slug': ('name',)}
+
 
 admin.site.register(PaymentMethod, PaymentAdmin)
 
@@ -29,6 +31,8 @@ admin.site.register(PaymentMethod, PaymentAdmin)
 class DeliveryAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'slug']
     list_filter = ['name']
+
+    prepopulated_fields = {'slug': ('name',)}
 
 
 admin.site.register(Delivery, DeliveryAdmin)
