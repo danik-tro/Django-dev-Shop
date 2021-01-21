@@ -6,33 +6,67 @@
 
 
 {% block content %}
+    <div class="content">
     <h1>Информация о пользователе</h1>
-    <p>Аватар</p>
-    <p>
-        <img class='user_info' width="100px" height="100px" src="{% if user.image %}{{ user.image.url }} {% else %}{% static 'image/no_image.png' %}{% endif %}">
-    </p>
-    <p>Username: {{ user.username }}</p>
-    <p>Имя: {{ user.first_name }}</p>
-    <p>Фамилия: {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Дата регистрации: {{ user.date_joined }}</p>
+        <div class="row">
+             <h5>Аватар</h5>
+        </div>
+        <div class="row">
+            <p>
+                <img class='user_info' width="100px" height="100px" src="{% if user.image %}{{ user.image.url }} {% else %}{% static 'image/no_image.png' %}{% endif %}">
+            </p>
+        </div>
+
+        <div class="row">
+            <h5>Username: {{ user.username }}</h5>
+        </div>
+
+        <div class="row">
+            <h5>Имя: {{ user.first_name }}</h5>
+        </div>
+
+        <div class="row">
+            <h5>Фамилия: {{ user.last_name }}</h5>
+        </div>
+
+        <div class="row">
+            <h5>Email: {{ user.email }}</h5>
+        </div>
+
+        <div class="row">
+            <h5>Дата регистрации: {{ user.date_joined }}</h5>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="container" id="orders">
     <h1>Информация о заказах</h1>
-    <div>
+
         {% for order in orders %}
-            <p>Дата заказа: {{ order.0.order.created }}</p>
-            <p>Имя: {{ order.0.order.first_name }}</p>
-            <p>Фамилия: {{ order.0.order.last_name }}</p>
-            <ul> <h2>Заказ</h2>
+            <div class="row">
+                <h2>Дата заказа: {{ order.0.order.created }}</h2>
+                <div class="col">
+                    <p> {{ order.0.order.first_name }}</p>
+                    <p> {{ order.0.order.last_name }}</p>
+                </div>
+
+            </div>
+
+            <ol id="order_item" class="container"> <h2>Заказ</h2>
 
                 {% for order_item in order.1 %}
-                    <li>
-                        <p>Продукт: {{ order_item.product }}</p>
-                        <p>Цена: {{ order_item.price }}</p>
-                        <p>Количество: {{ order_item.quantity }}</p>
-                    </li>
+                    <li><ul>
+                        <li>Продукт: {{ order_item.product }}</li>
+                        <li>Цена: {{ order_item.price }}</li>
+                        <li>Количество: {{ order_item.quantity }}</li>
+                    </ul></li>
+
                 {% endfor %}
 
-            </ul>
+            </ol>
         {% endfor %}
 
     </div>

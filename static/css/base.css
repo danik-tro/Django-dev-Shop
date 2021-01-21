@@ -4,6 +4,14 @@ body {
     font-family:helvetica, sans-serif;
 }
 
+#orders {
+    background-color: #666666;
+}
+
+#order_item {
+    background-color: #5993bb;
+}
+
 h1, h2, h3, h4, h5 , h6 {
     font-family: 'Ubuntu', sans-serif; font-weight:normal;
 }
@@ -248,3 +256,4 @@ ul.errorlist {
 .order-info span {
     float:right;
 }
+
