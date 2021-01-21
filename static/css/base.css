@@ -4,6 +4,29 @@ body {
     font-family:helvetica, sans-serif;
 }
 
+.buttons {
+    width: 35px;
+    height: 15px;
+}
+
+#button_1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+}
+
+#button_2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #1b24c6;
+}
+
+#button_2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #af4c63;
+}
+
 #orders {
     background-color: #666666;
 }
