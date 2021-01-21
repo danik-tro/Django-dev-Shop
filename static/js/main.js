@@ -21,6 +21,9 @@ let elem = document.getElementsByClassName('form-group row')[0]
 
 function change(value, elem) {
     elem.style.backgroundColor = "green";
+    let length = '${value.length}';
+
+    console.log(length);
     elem.innerText = value.replaceAll(/[.,'"\/:;\s\\%|]/g, '');
 }
 

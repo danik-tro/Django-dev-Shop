@@ -1,6 +1,7 @@
 {% extends  'registration/base_login.html' %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block main %}
 <div class="card">
@@ -17,4 +18,5 @@
 </form>
 </div>
 </div>
+    <script src="{% static 'js/lesson.js' %}"></script>
 {% endblock %}
