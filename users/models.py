@@ -1,7 +1,4 @@
 from django.db import models
-from django.core.files import File
-from urllib import request
-import os
 from django.contrib.auth.models import AbstractUser
 
 
